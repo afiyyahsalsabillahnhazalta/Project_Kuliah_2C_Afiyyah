@@ -88,7 +88,7 @@ while ($record = mysqli_fetch_array($query)){
               <td class="d-flex">
                 <button class="btn btn-info btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalView"><i class="bi bi-eye"></i></button>
                 <button class="btn btn-warning btn-sm me-1"><i class="bi bi-pencil-square"></i></button>
-                <button class="btn btn-denger btn-sm"><i class="bi bi-trash"></i></button>
+                <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
               </td>
             </tr>
             <?php
