@@ -1,15 +1,57 @@
+<?php
+include "proses/connect.php";
+
+// Ambil data stok gudang
+$query = mysqli_query($conn, "SELECT * FROM tb_stokgudang");
+while ($record = mysqli_fetch_array($query)) {
+    $stok_gudang[] = $record;
+}
+?>
+
 <div class="col-lg-9 mt-2">
-                <div class="card">
-                    <div class="card-header">
-                        Stok Gudang
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">SISTEM PENJUALAN SUSU MILANO</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis saepe deserunt illo
-                            cupiditate perferendis iusto expedita eius nam, a fugit omnis? Eveniet commodi provident ad
-                            molestias autem nemo non ullam.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
+    <div class="card">
+        <div class="card-header">
+            Halaman Stok Barang Gudang
+        </div>
+        <div class="card-body">
+            <div class="row">
                 </div>
-            </div>
+
+            <?php
+            if (empty($stok_gudang)) {
+                echo "Data stok barang gudang tidak ada";
+            } else {
+            ?>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Kode Barang</th>
+                                <th scope="col">Nama Barang</th>
+                                <th scope="col">Stok </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $no = 1;
+                            foreach ($stok_gudang as $row) {
+                            ?>
+                                <tr>
+                                    <th scope="row"><?php echo $no++ ?></th>
+                                    <td><?php echo $row['id'] ?></td>
+                                    <td><?php echo $row['nama_barang'] ?></td>
+                                    <td><?php echo $row['qty'] ?></td>
+                                </tr>
+                            <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            <?php
+            }
+            ?>
+        </div>
+    </div>
+</div>

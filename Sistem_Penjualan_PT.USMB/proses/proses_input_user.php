@@ -24,3 +24,4 @@ if (!empty($_POST['input_user_validate'])) {
 }
 echo $message;
 ?>
+

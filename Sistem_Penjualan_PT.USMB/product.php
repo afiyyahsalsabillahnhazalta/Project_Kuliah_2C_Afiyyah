@@ -346,6 +346,7 @@ while ($record = mysqli_fetch_array($query)) {
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
+                                <th scope="col">Kode Produk</th>
                                 <th scope="col">Foto Produk</th>
                                 <th scope="col">Nama Produk</th>
                                 <th scope="col">Ukuran</th>
@@ -365,6 +366,9 @@ while ($record = mysqli_fetch_array($query)) {
                                         <?php echo $no++ ?>
                                     </th>
                                     <td>
+                                        <?php echo $row['id'] ?>
+                                    </td>
+                                    <td>
                                         <div style="width: 90px">
                                             <img src="assets/img/<?php echo $row['foto'] ?>" class="img-thumbnail" alt="...">
                                     </td>
@@ -376,14 +380,14 @@ while ($record = mysqli_fetch_array($query)) {
                         <?php echo $row['ukuran'] ?>
                     </td>
                     <td>
-                    <?php echo number_format((int) $row['harga_satuan'], 0, ',', '.') ?>
-                  </td>
+                        <?php echo number_format((int) $row['harga_satuan'], 0, ',', '.') ?>
+                    </td>
                     <td>
                         <?php echo $row['jumlah_per_dus'] ?>
                     </td>
                     <td>
-                    <?php echo number_format((int) $row['harga_per_dus'], 0, ',', '.') ?>
-                  </td>
+                        <?php echo number_format((int) $row['harga_per_dus'], 0, ',', '.') ?>
+                    </td>
                     <td>
                         <div class="d-flex">
                             <button class="btn btn-info btn-sm me-1" data-bs-toggle="modal"
@@ -407,23 +411,23 @@ while ($record = mysqli_fetch_array($query)) {
 </div>
 </div>
 <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (() => {
-            'use strict'
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+        'use strict'
 
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            const forms = document.querySelectorAll('.needs-validation')
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
 
-            // Loop over them and prevent submission
-            Array.from(forms).forEach(form => {
-                form.addEventListener('submit', event => {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
 
-                    form.classList.add('was-validated')
-                }, false)
-            })
-        })()
-    </script>
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+</script>

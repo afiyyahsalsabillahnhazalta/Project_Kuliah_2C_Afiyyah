@@ -139,12 +139,13 @@ if (!empty($_SESSION['username_usmb'])) {
                     <input type="checkbox" value="remember-me">
                     Remember me
                 </label>
-                <p><b>login : admin@gmail.com (password)</b></p>
-            </div>
+                </div>
             <button class="btn btn-primary w-100 py-2" type="submit" name="submit_validate" value="sbb">Login</button>
             <p class="mt-5 mb-3 text-body-secondary">&copy;
                 <?php echo date("Y") ?>
             </p>
+            <p>Login : admin@gmail.com <br>
+                Password : password</p>
         </form>
     </main>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
