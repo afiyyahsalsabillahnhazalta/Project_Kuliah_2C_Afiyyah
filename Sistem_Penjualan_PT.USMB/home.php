@@ -5,6 +5,26 @@ while ($row = mysqli_fetch_array($query)) {
   $result[] = $row;
 }
 
+$query_chart = mysqli_query($conn, "SELECT nama_produk, tb_produk.id, SUM(tb_list_penjualan.qty) AS total_qty FROM tb_produk
+LEFT JOIN tb_list_penjualan ON tb_produk.id = tb_list_penjualan.produk 
+GROUP BY tb_produk.id
+ORDER BY tb_produk.id ASC");
+
+// $result_chart = array();
+while($record_chart = mysqli_fetch_array($query_chart)){
+  $result_chart[] = $record_chart;
+}
+
+$array_produk = array_column($result_chart, 'nama_produk');
+$array_produk_quote = array_map(function($produk){
+  return "'".$produk."'";
+}, $array_produk);
+$string_produk = implode(',', $array_produk_quote);
+// echo $string_produk."<br>";
+
+$array_jumlah_penjualan = array_column($result_chart, 'total_qty');
+$string_jumlah_penjualan = implode (',', $array_jumlah_penjualan);
+// echo $string_jumlah_penjualan;
 ?>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -57,14 +77,54 @@ while ($row = mysqli_fetch_array($query)) {
   </div>
   <!-- Akhir Courosel -->
 
+
   <!-- Judul -->
   <div class="card mt-4 border-0 bg-light">
     <div class="card-body text-center">
-      <h5 class="card-title">PT. USAHA SEPAKAT MAJU BERSAMA</h5>
+      <h5 class="card-title">PT. USAHA SEPAKAT MAJU BERSAMA LHOKSEUMAWE</h5>
       <p class="card-text"> Aplikasi Manajemen Penjualan Produk Susu Milano.
       </p>
-      </div>
+    </div>
   </div>
   <!-- Akhir Judul -->
 
+  <!-- Chard -->
+  <div class="card mt-4 border-0 bg-light">
+    <div class="card-body text-center">
+      <div>
+        <canvas id="myChart"></canvas>
+      </div>
+      <script>
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: [<?php echo $string_produk ?>],
+            datasets: [{
+              label: 'Produk Terjual',
+              data: [<?php echo $string_jumlah_penjualan ?>],
+              borderWidth: 1,
+               backgroundColor:[
+                'rgba(202, 44, 44, 0.93)', 
+                'rgba(76, 170, 203, 0.93)', 
+                'rgba(231, 208, 41, 0.93)', 
+                'rgba(131, 244, 145, 0.93)', 
+                'rgba(202, 131, 175, 0.93)',
+                'rgba(237, 150, 26, 0.93)'
+               ]
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      </script>
+    </div>
   </div>
+  <!-- Akhir Chard -->
+</div>

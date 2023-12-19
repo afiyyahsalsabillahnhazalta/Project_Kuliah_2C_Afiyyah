@@ -50,17 +50,7 @@ while ($record = mysqli_fetch_array($query)) {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="floatingInput"
-                                                placeholder="Ukuran produk" name="ukuran" required>
-                                            <label for="floatingInput">Ukuran</label>
-                                            <div class="invalid-feedback">
-                                                Masukkan Ukuran produk.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-floating mb-3">
                                             <input type="number" class="form-control" id="floatingInput"
                                                 placeholder="Hargasatuan produk" name="harga_satuan" required>
@@ -70,7 +60,7 @@ while ($record = mysqli_fetch_array($query)) {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-floating mb-3">
                                             <input type="text" class="form-control" id="floatingInput"
                                                 placeholder="Jumlahperdus produk" name="jumlah_per_dus" required>
@@ -80,7 +70,7 @@ while ($record = mysqli_fetch_array($query)) {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-floating mb-3">
                                             <input type="number" class="form-control" id="floatingInput"
                                                 placeholder="Hargaperdus produk" name="harga_per_dus" required>
@@ -142,17 +132,7 @@ while ($record = mysqli_fetch_array($query)) {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
-                                                <div class="form-floating mb-3">
-                                                    <input disabled type="text" class="form-control" id="floatingInput"
-                                                        name="ukuran_produk" value="<?php echo $row['ukuran'] ?>">
-                                                    <label for="floatingInput">Ukuran</label>
-                                                    <div class="invalid-feedback">
-                                                        Masukkan Ukuran produk.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
                                                 <div class="form-floating mb-3">
                                                     <input disabled type="number" class="form-control" id="floatingInput"
                                                         name="harga_satuan" value="<?php echo $row['harga_satuan'] ?>">
@@ -162,7 +142,7 @@ while ($record = mysqli_fetch_array($query)) {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
                                                 <div class="form-floating mb-3">
                                                     <input disabled type="text" class="form-control" id="floatingInput"
                                                         name="jumlah_per_dus" value="<?php echo $row['jumlah_per_dus'] ?>">
@@ -172,7 +152,7 @@ while ($record = mysqli_fetch_array($query)) {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
                                                 <div class="form-floating mb-3">
                                                     <input disabled type="number" class="form-control" id="floatingInput"
                                                         name="harga_per_dus" value="<?php echo $row['harga_per_dus'] ?>">
@@ -238,18 +218,7 @@ while ($record = mysqli_fetch_array($query)) {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
-                                                <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control" id="floatingInput"
-                                                        placeholder="Ukuran produk" name="ukuran_produk" required
-                                                        value="<?php echo $row['ukuran'] ?>">
-                                                    <label for="floatingInput">Ukuran</label>
-                                                    <div class="invalid-feedback">
-                                                        Masukkan Ukuran produk.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
                                                 <div class="form-floating mb-3">
                                                     <input type="number" class="form-control" id="floatingInput"
                                                         placeholder="Hargasatuan produk" name="harga_satuan" required
@@ -260,7 +229,7 @@ while ($record = mysqli_fetch_array($query)) {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
                                                 <div class="form-floating mb-3">
                                                     <input type="text" class="form-control" id="floatingInput"
                                                         placeholder="Jumlahperdus produk" name="jumlah_per_dus" required
@@ -271,7 +240,7 @@ while ($record = mysqli_fetch_array($query)) {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
                                                 <div class="form-floating mb-3">
                                                     <input type="number" class="form-control" id="floatingInput"
                                                         placeholder="Hargaperdus produk" name="harga_per_dus" required
@@ -349,7 +318,6 @@ while ($record = mysqli_fetch_array($query)) {
                                 <th scope="col">Kode Produk</th>
                                 <th scope="col">Foto Produk</th>
                                 <th scope="col">Nama Produk</th>
-                                <th scope="col">Ukuran</th>
                                 <th scope="col">Harga Satuan</th>
                                 <th scope="col">Jumlah Per Dus</th>
                                 <th scope="col">Harga Per Dus</th>
@@ -375,9 +343,6 @@ while ($record = mysqli_fetch_array($query)) {
                     </div>
                     <td>
                         <?php echo $row['nama_produk'] ?>
-                    </td>
-                    <td>
-                        <?php echo $row['ukuran'] ?>
                     </td>
                     <td>
                         <?php echo number_format((int) $row['harga_satuan'], 0, ',', '.') ?>

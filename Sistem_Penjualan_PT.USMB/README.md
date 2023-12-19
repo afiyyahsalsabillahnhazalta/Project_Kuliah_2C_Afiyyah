@@ -4,15 +4,13 @@ Sistem yang dapat digunakan untuk mempermudah manajemenkan penjualan.
 ## Admin (1)
     - Mengelola semua data yang ada pada ruang administrator
     - Menambah/mengubah/menghapus data pembelian dan produk
-    - Menambah/mengubah/menghapus user
-    - Mencetak transaksi 
+    - Menambah/mengubah/menghapus user 
     - Melihat data penjualan
 ## Salesman (2)
-    - Menginput faktur di penjualan
+    - Menginput faktur di penjualan dan mencetak faktur
     - Melihat laporan penjualan
 ## Gudang (3)
-    - Melihat transaksi penerimaan dan pengeluaran barang 
-    - Menambah/mengedit/menghapus data penerimaan dan pengeluaran barang
+    - Melihat data Stok Barang
 
 ## Admin (1)
     - Pembelian
@@ -20,11 +18,12 @@ Sistem yang dapat digunakan untuk mempermudah manajemenkan penjualan.
     - Produk
     - User
     - Laporan
-    - Stok Barang 
+    - Stok  
 ## Salesman (2)
     - Penjualan
-    - Laporan penjualan (melihat laporan sendiri)
-    - Produk (melihat)
+    - Laporan 
+    - Produk
+    - Stok
 ## Gudang (3)
-    - Produk (melihat)
-    - Stok Barang
+    - Produk
+    - Stok 

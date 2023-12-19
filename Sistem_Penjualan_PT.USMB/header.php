@@ -6,7 +6,7 @@ $record = mysqli_fetch_array($query);
 ?>
 <nav class="navbar navbar-expand  navbar-dark bg-primary sticky-top">
   <div class="container">
-    <a class="navbar-brand" href=".">PT. Usaha Sepakat Maju Bersama</a>
+    <a class="navbar-brand" href="."><i class="bi bi-buildings"></i> PT. Usaha Sepakat Maju Bersama</a>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item dropdown">

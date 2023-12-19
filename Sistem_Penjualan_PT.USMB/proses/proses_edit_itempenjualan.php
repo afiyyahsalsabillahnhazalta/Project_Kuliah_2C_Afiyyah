@@ -1,0 +1,22 @@
+<?php
+session_start();
+include "connect.php";
+$id = (isset($_POST['id'])) ? htmlentities($_POST['id']) : " ";
+$kode_penjualan = (isset($_POST['kode_penjualan'])) ? htmlentities($_POST['kode_penjualan']) : " ";
+$pelanggan = (isset($_POST['pelanggan'])) ? htmlentities($_POST['pelanggan']) : " ";
+$alamat = (isset($_POST['alamat_pelanggan'])) ? htmlentities($_POST['alamat_pelanggan']) : " ";
+$produk = (isset($_POST['produk'])) ? htmlentities($_POST['produk']) : " ";
+$qty = (isset($_POST['qty'])) ? htmlentities($_POST['qty']) : " ";
+
+if (!empty($_POST['edit_itempenjualan_validate'])) {
+        $query = mysqli_query($conn, "UPDATE tb_list_penjualan SET produk='$produk', qty='$qty' WHERE id_list_penjualan='$id' ");
+        if ($query) {
+            $message = '<script>alert("Data Berhasil Dimasukkan")
+            window.location="../?x=itempenjualan&penjualan=' . $kode_penjualan . '&pelanggan=' . $pelanggan . '&alamat_pelanggan=' . $alamat . '"</script>';
+        } else {
+            $message = '<script>alert("Data Gagal Dimasukkan")
+            window.location="../?x=itempenjualan&penjualan=' . $kode_penjualan . '&pelanggan=' . $pelanggan . '&alamat_pelanggan=' . $alamat . '"</script>';
+        }
+    }
+echo $message;
+?>

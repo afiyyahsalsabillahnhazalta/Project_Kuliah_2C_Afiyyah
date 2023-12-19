@@ -2,7 +2,6 @@
 include "connect.php";
 $id = (isset($_POST['id'])) ? htmlentities($_POST['id']) : " ";
 $nama_produk = (isset($_POST['nama_produk'])) ? htmlentities($_POST['nama_produk']) : " ";
-$ukuran = (isset($_POST['ukuran_produk'])) ? htmlentities($_POST['ukuran_produk']) : " ";
 $harga_satuan = (isset($_POST['harga_satuan'])) ? htmlentities($_POST['harga_satuan']) : " ";
 $jumlah_per_dus = (isset($_POST['jumlah_per_dus'])) ? htmlentities($_POST['jumlah_per_dus']) : " ";
 $harga_per_dus = (isset($_POST['harga_per_dus'])) ? htmlentities($_POST['harga_per_dus']) : " ";
@@ -44,7 +43,7 @@ if (!empty($_POST['input_produk_validate'])) {
         window.location="../product"</script>';
     } else {
         if (move_uploaded_file($_FILES['foto']['tmp_name'], $target_file)) {
-            $query = mysqli_query($conn, "UPDATE tb_produk SET foto='" . $kode_rand . $_FILES['foto']['name'] . "', nama_produk='$nama_produk', ukuran='$ukuran', harga_satuan='$harga_satuan', jumlah_per_dus='$jumlah_per_dus', harga_per_dus='$harga_per_dus', keterangan='$keterangan' WHERE id='$id'");
+            $query = mysqli_query($conn, "UPDATE tb_produk SET foto='" . $kode_rand . $_FILES['foto']['name'] . "', nama_produk='$nama_produk', harga_satuan='$harga_satuan', jumlah_per_dus='$jumlah_per_dus', harga_per_dus='$harga_per_dus', keterangan='$keterangan' WHERE id='$id'");
             if ($query) {
                 $message = '<script>alert("Data Berhasil Diupdate")
             window.location="../product"</script>';

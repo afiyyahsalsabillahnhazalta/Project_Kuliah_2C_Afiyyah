@@ -27,8 +27,8 @@ while ($record = mysqli_fetch_array($query)) {
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
-                                <th scope="col">Kode Barang</th>
-                                <th scope="col">Nama Barang</th>
+                                <th scope="col">Kode Produk</th>
+                                <th scope="col">Nama Produk</th>
                                 <th scope="col">Stok </th>
                             </tr>
                         </thead>

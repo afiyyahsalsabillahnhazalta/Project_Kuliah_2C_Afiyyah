@@ -1,6 +1,7 @@
 <?php
 include "proses/connect.php";
-$query = mysqli_query($conn, "SELECT * FROM tb_pembelian");
+$query = mysqli_query($conn, "SELECT *, SUM(harga_satuan*qty) AS jumlahnya FROM tb_pembelian
+GROUP BY id");
 while ($record = mysqli_fetch_array($query)) {
   $result[] = $record;
 }
@@ -51,7 +52,7 @@ while ($record = mysqli_fetch_array($query)) {
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-6">
+                  <div class="col-lg-4">
                     <div class="form-floating mb-3">
                       <input type="date" class="form-control" id="tgl_pembelian" placeholder="Tanggal Pembelian"
                         name="tgl_pembelian" required>
@@ -61,7 +62,7 @@ while ($record = mysqli_fetch_array($query)) {
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-6">
+                  <div class="col-lg-4">
                     <div class="form-floating mb-3">
                       <input type="number" class="form-control" id="qty" placeholder="Qty" name="qty" required>
                       <label for="qty">Qty</label>
@@ -70,24 +71,13 @@ while ($record = mysqli_fetch_array($query)) {
                       </div>
                     </div>
                   </div>
-
-                  <div class="col-lg-6">
+                <div class="col-lg-4">
                     <div class="form-floating mb-3">
                       <input type="number" class="form-control" id="harga_satuan" placeholder="Harga Satuan"
                         name="harga_satuan" required>
                       <label for="harga_satuan">Harga Satuan/Dus</label>
                       <div class="invalid-feedback">
                         Masukkan Harga Satuan/Dus.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-floating mb-3">
-                      <input type="number" class="form-control" id="jumlah_rp" placeholder="Jumlah_Rp" name="jumlah_rp"
-                        required>
-                      <label for="jumlah_rp">Jumlah(Rp)</label>
-                      <div class="invalid-feedback">
-                        Masukkan Jumlah(Rp).
                       </div>
                     </div>
                   </div>
@@ -112,7 +102,7 @@ while ($record = mysqli_fetch_array($query)) {
           <!-- Modal Edit -->
           <div class="modal fade" id="ModalEdit<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
-            <div class="modal-dialog modal-xl modal-fullscreen-md-down">
+            <div class="modal-dialog modal-lg modal-fullscreen-md-down">
               <div class="modal-content">
                 <div class="modal-header">
                   <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Data Pembelian</h1>
@@ -133,17 +123,18 @@ while ($record = mysqli_fetch_array($query)) {
                           </div>
                         </div>
                       </div>
+                      
                       <div class="col-lg-6">
                         <div class="form-floating mb-3">
                           <input type="text" class="form-control" id="floatingInput" placeholder="Nama barang"
-                            name="nama_barang" required value="<?php echo $row['nama_barang'] ?>">
+                            name="nama_barang" required value="<?php echo $row['nama_barang'] ?>" readonly>
                           <label for="floatingInput">Nama barang</label>
                           <div class="invalid-feedback">
                             Masukkan Nama produk.
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-6">
+                      <div class="col-lg-4">
                         <div class="form-floating mb-3">
                           <input type="date" class="form-control" id="tgl_pembelian" placeholder="Tanggal Pembelian"
                             name="tgl_pembelian" required value="<?php echo $row['tgl_pembelian'] ?>">
@@ -153,7 +144,7 @@ while ($record = mysqli_fetch_array($query)) {
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-6">
+                      <div class="col-lg-4">
                         <div class="form-floating mb-3">
                           <input type="number" class="form-control" id="qty" placeholder="Qty" name="qty" readonly
                             value="<?php echo $row['qty'] ?>">
@@ -163,7 +154,7 @@ while ($record = mysqli_fetch_array($query)) {
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-6">
+                      <div class="col-lg-4">
                         <div class="form-floating mb-3">
                           <input type="number" class="form-control" id="harga_satuan" placeholder="Harga Satuan"
                             name="harga_satuan" required value="<?php echo $row['harga_satuan'] ?>">
@@ -173,18 +164,8 @@ while ($record = mysqli_fetch_array($query)) {
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-6">
-                        <div class="form-floating mb-3">
-                          <input type="number" class="form-control" id="jumlah_rp" placeholder="Jumlah Rp" name="jumlah_rp"
-                            required value="<?php echo $row['jumlah_rp'] ?>">
-                          <label for="jumlah_rp">Jumlah(Rp)</label>
-                          <div class="invalid-feedback">
-                            Masukkan Jumlah(Rp).
-                          </div>
-                        </div>
-                      </div>
                     </div>
-                    <div class="modal-footer">
+                      <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                       <button type="submit" class="btn btn-primary" name="edit_pembelian_validate" value="12345">Save
                         changes</button>
@@ -227,13 +208,13 @@ while ($record = mysqli_fetch_array($query)) {
           <?php
         }
         ?>
-        <div class="table-responsive">
-          <table class="table table-hover">
+        <div class="table-responsive mt-2">
+          <table class="table table-hover" id="example">
             <thead>
               <tr class="text-nowrap">
                 <th scope="col">No</th>
                 <th scope="col">Kode Pembelian</th>
-                <th scope="col">Nama Barang</th>
+                <th scope="col">Nama Produk</th>
                 <th scope="col">Tanggal Pembelian</th>
                 <th scope="col">Qty</th>
                 <th scope="col">Harga Satuan/Dus</th>
@@ -243,6 +224,7 @@ while ($record = mysqli_fetch_array($query)) {
             </thead>
             <tbody>
               <?php
+              $jumlah_rp = 0;
               $no = 1;
               foreach ($result as $row) {
                 ?>
@@ -266,7 +248,7 @@ while ($record = mysqli_fetch_array($query)) {
                     <?php echo number_format((int) $row['harga_satuan'], 0, ',', '.') ?>
                   </td>
                   <td>
-                    <?php echo number_format((int) $row['jumlah_rp'], 0, ',', '.') ?>
+                  <?php echo number_format($row['jumlahnya'], 0, ',', '.') ?>
                   </td>
                   <td>
                     <div class="d-flex">
@@ -281,6 +263,7 @@ while ($record = mysqli_fetch_array($query)) {
                   </td>
                 </tr>
                 <?php
+                $jumlah_rp += $row['jumlahnya'];
               }
               ?>
             </tbody>
@@ -290,25 +273,3 @@ while ($record = mysqli_fetch_array($query)) {
     </div>
   </div>
 </div>
-
-<script>
-  // Example starter JavaScript for disabling form submissions if there are invalid fields
-  (() => {
-    'use strict'
-
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms = document.querySelectorAll('.needs-validation')
-
-    // Loop over them and prevent submission
-    Array.from(forms).forEach(form => {
-      form.addEventListener('submit', event => {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-
-        form.classList.add('was-validated')
-      }, false)
-    })
-  })()
-</script>

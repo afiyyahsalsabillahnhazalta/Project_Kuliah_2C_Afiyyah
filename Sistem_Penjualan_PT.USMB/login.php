@@ -145,7 +145,7 @@ if (!empty($_SESSION['username_usmb'])) {
                 <?php echo date("Y") ?>
             </p>
             <p>Login : admin@gmail.com <br>
-                Password : password</p>
+                Password : yaya123</p>
         </form>
     </main>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
