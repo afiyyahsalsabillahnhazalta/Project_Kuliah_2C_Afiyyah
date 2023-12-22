@@ -1,5 +1,5 @@
 # Sistem Penjualan (Susu Milano PT.USMB)
-Sistem yang dapat digunakan untuk mempermudah manajemenkan penjualan.
+Sistem yang dapat digunakan untuk mempermudah memanajemenkan penjualan.
 
 ## Admin (1)
     - Mengelola semua data yang ada pada ruang administrator
