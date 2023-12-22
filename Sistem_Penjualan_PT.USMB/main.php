@@ -24,7 +24,7 @@ $hasil = mysqli_fetch_array($query);
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
 </head>
 
-<body style="height: 3000px">
+<body>
     <!-- Header -->
     <?php include "header.php"; ?>
     <!-- End Header -->
@@ -40,7 +40,7 @@ $hasil = mysqli_fetch_array($query);
             ?>
             <!-- End Content -->
         </div>
-        <div class="fixed-bottom text-center bg-primary py-1" style="color: #fff">
+        <div class="fixed-bottom text-center bg-primary text-light py-1">
             Copyright 2023 A'fiyyah Salsabillah Nhazalta
         </div>
     </div>

@@ -14,8 +14,6 @@ $alamat = $_GET['alamat_pelanggan'];
 
 while ($record = mysqli_fetch_array($query)) {
     $result[] = $record;
-
-    $salesman = $record['salesman'];
 }
 
 $select_produk = mysqli_query($conn, "SELECT id, nama_produk FROM tb_produk");
@@ -225,7 +223,7 @@ $select_produk = mysqli_query($conn, "SELECT id, nama_produk FROM tb_produk");
             </tbody>
         </table>
         <div id="ttd">
-            <p class="signature-line">Salesman
+            <p class="signature-line"> Salesman
                 <?php echo $salesman ?>
             </p>
             <p class="signature-line">Pelanggan
@@ -250,24 +248,3 @@ $select_produk = mysqli_query($conn, "SELECT id, nama_produk FROM tb_produk");
     }
 </script>
 
-<script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (() => {
-        'use strict'
-
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        const forms = document.querySelectorAll('.needs-validation')
-
-        // Loop over them and prevent submission
-        Array.from(forms).forEach(form => {
-            form.addEventListener('submit', event => {
-                if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                }
-
-                form.classList.add('was-validated')
-            }, false)
-        })
-    })()
-</script>

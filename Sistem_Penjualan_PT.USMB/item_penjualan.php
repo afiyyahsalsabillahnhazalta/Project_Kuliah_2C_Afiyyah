@@ -5,7 +5,8 @@ $query = mysqli_query($conn, "SELECT *, SUM(harga_per_dus*qty) AS harganya, tb_p
 LEFT JOIN tb_penjualan ON tb_penjualan.id_penjualan = tb_list_penjualan.kode_penjualan
     LEFT JOIN tb_produk ON tb_produk.id = tb_list_penjualan.produk 
     LEFT JOIN tb_bayar ON tb_bayar.id_bayar = tb_penjualan.id_penjualan 
-    GROUP BY id_list_penjualan
+    LEFT JOIN tb_user ON tb_user.id = tb_penjualan.salesman
+    GROUP BY id_list_penjualan  
     HAVING tb_list_penjualan.kode_penjualan = $_GET[penjualan]");
 
 $kode = $_GET['penjualan'];
@@ -18,7 +19,7 @@ while ($record = mysqli_fetch_array($query)) {
     // $kode = $record['id_penjualan'];
     // $pelanggan = $record['pelanggan'];
     // $alamat = $record['alamat_pelanggan'];
-    $salesman = $record['salesman'];
+    $salesman = $record['nama'];
 }
 
 $select_produk = mysqli_query($conn, "SELECT id, nama_produk FROM tb_produk");

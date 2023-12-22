@@ -6,7 +6,7 @@ $query = mysqli_query($conn, "SELECT tb_penjualan.*,tb_bayar.*,nama, SUM(harga_p
     LEFT JOIN tb_list_penjualan ON tb_list_penjualan.kode_penjualan = tb_penjualan.id_penjualan
     LEFT JOIN tb_produk ON tb_produk.id = tb_list_penjualan.produk 
    JOIN tb_bayar ON tb_bayar.id_bayar = tb_penjualan.id_penjualan
-    GROUP BY id_penjualan ORDER BY waktu_penjualan ASC");
+   WHERE salesman=$_SESSION[id_usmb]  GROUP BY id_penjualan ORDER BY waktu_penjualan ASC");
 while ($record = mysqli_fetch_array($query)) {
     $result[] = $record;
 }
